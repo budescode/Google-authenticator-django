@@ -4,7 +4,6 @@ from django.contrib import messages
 from helpers.generate_otp import extract_secret, generate_totp_qr_code, verify_otp
 from user.forms import LoginForm, RegistrationForm
 from .models import *
-from django.contrib.auth.models import User
 
 
 User = get_user_model()
