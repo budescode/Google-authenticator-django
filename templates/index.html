@@ -1,0 +1,13 @@
+{% if request.user.is_authenticated %}
+<p>Hello, {{ request.user.username }}</p>
+<a href="{% url 'userurl:logout' %}"><button>Logout</button></a>
+
+{% endif %}
+<ul>
+	<li><a href="{% url 'userurl:login' %}">Login</a></li>
+	<li><a href="{% url 'userurl:signup' %}">Register</a></li>
+</ul>
+
+
+
+								

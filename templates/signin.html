@@ -1,0 +1,23 @@
+
+								<div >
+									<h3 >Login Your Account</h3>
+									<form class="form-signup" action="{% url 'userurl:login' %}" method="post"> {% csrf_token %}
+										
+										
+											<div>
+												<input name="email" type="email" placeholder="Email *" class="form-control required email" aria-required="true">
+											</div>
+										
+										
+											<div>
+												<input name="password" type="password" placeholder="Password *" class="form-control required" aria-required="true">
+											</div>
+										
+										<button type="submit" >Log In</button>
+										{% include 'messages.html' %}
+										
+										
+										<p >Don't have an account?  <a href="{% url 'userurl:signup' %}">Signup here</a></p>
+									</form>
+								</div>
+		

@@ -1,0 +1,42 @@
+<div>
+		<h3>Verify OTP</h3>
+		<p>Verify your login with google authenticator</p>
+		<form method="post" action="{% url 'userurl:verify_otp' %}"> {% csrf_token %}
+			
+			<div>
+				<div>
+					
+					{% if secret_stored == False %}
+					<div id="qrcode" style="width: 250px; height:250px;"></div>
+					<div>
+						<p>Key: {{secret}}</p>
+					</div>
+					
+					{% endif %}
+					<br>
+					<input type="hidden" name="email" value="{{email}}">
+					<input name="otp" type="text" placeholder="OTP" class="form-control required name" required>
+				</div>
+			</div>
+		
+			<button type="submit" >Submit</button>
+			{% include 'messages.html' %}
+			
+		</form>
+</div>
+								
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
+
+<script>
+	var qrCodeData = "{{ qs }}"; 
+	var qrCodeOptions = {
+		width: 200,
+		height: 200,
+		
+		colorLight: "#ffffff",
+		correctLevel: QRCode.CorrectLevel.H,
+	};
+	var qrCode = new QRCode(document.getElementById("qrcode"), qrCodeData, qrCodeOptions);
+</script>
+
