@@ -1,15 +1,12 @@
-
-								<div >
-									<h3 >Login Your Account</h3>
-									<form class="form-signup" action="{% url 'userurl:login' %}" method="post"> {% csrf_token %}
-										
-										
-										{{ form.as_p }}
-										<button type="submit" >Log In</button>
-										{% include 'messages.html' %}
-										
-										
-										<p >Don't have an account?  <a href="{% url 'userurl:signup' %}">Signup here</a></p>
-									</form>
-								</div>
+<div >
+	<h3 >Login Your Account</h3>
+	<form class="form-signup" action="{% url 'userurl:login' %}" method="post"> {% csrf_token %}
 		
+		{{ form.as_p }}
+		<button type="submit" >Log In</button>
+		{% include 'messages.html' %}
+		
+		<p >Don't have an account?  <a href="{% url 'userurl:signup' %}">Signup here</a></p>
+	</form>
+</div>
+

@@ -32,7 +32,6 @@ class LoginForm(forms.Form):
 
         if username and password:
             user = authenticate(username=username, password=password)
-            print(username, password, user, "this is the user!")
             if not user or not user.is_active:
                 raise forms.ValidationError('Invalid username or password.')
             return cleaned_data

@@ -6,7 +6,11 @@ User = get_user_model()
 
 def generate_totp_qr_code(email):
     user = User.objects.get(email__iexact=email)
-    totp_device, created = EmailTOTPDevice.objects.get_or_create(email=user.email, user=user, defaults={'confirmed': True})
+    try:
+        totp_device = EmailTOTPDevice.objects.get(email=user.email, user=user)
+    except EmailTOTPDevice.DoesNotExist:
+        totp_device = EmailTOTPDevice.objects.create(email=user.email, tolerance=0, user=user)
+        #tolerance is set to 0 because we do not want to accept codes that have passed 30 seconds 
     name = f'Django Auth: {email}'
     modified_otp_uri = re.sub(r'otpauth://totp/[^?]+', f'otpauth://totp/{name}', totp_device.config_url)
     extract_secret(modified_otp_uri)
@@ -14,7 +18,7 @@ def generate_totp_qr_code(email):
 
 def verify_otp(email, code):
     user = User.objects.get(email__iexact=email)
-    totp_device, created = EmailTOTPDevice.objects.get_or_create(email=user.email, user=user)
+    totp_device = EmailTOTPDevice.objects.get(email=user.email, user=user)
     return  totp_device.verify_token(code)
 
 def extract_secret(uri):

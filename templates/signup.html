@@ -1,24 +1,15 @@
+<div>
+	<h3 >Register An Account</h3>
+	<form  action="{% url 'userurl:signup' %}" method="post"> {% csrf_token %}
+		{{ form.as_p }}
+											
+		{% include 'messages.html' %}
 
-					
-					
-					
-
-								<div>
-									<h3 >Register An Account</h3>
-									<form  action="{% url 'userurl:signup' %}" method="post"> {% csrf_token %}
-										
-										
-										{{ form.as_p }}
-										
-									
-									
-										{% include 'messages.html' %}
-
-										<button type="submit">Signup</button>
-										
-										<p >Already registered? <a href="{% url 'userurl:login' %}">Login here</a></p>
-									</form>
-								</div>
+		<button type="submit">Signup</button>
+		
+		<p >Already registered? <a href="{% url 'userurl:login' %}">Login here</a></p>
+	</form>
+</div>
 						
 			
 	

@@ -2,10 +2,7 @@
 		<h3>Verify OTP</h3>
 		<p>Verify your login with google authenticator</p>
 		<form method="post" action="{% url 'userurl:verify_otp' %}"> {% csrf_token %}
-			
-			<div>
-				<div>
-					
+			<div>					
 					{% if secret_stored == False %}
 					<div id="qrcode" style="width: 250px; height:250px;"></div>
 					<div>
@@ -16,7 +13,6 @@
 					<br>
 					<input type="hidden" name="email" value="{{email}}">
 					<input name="otp" type="text" placeholder="OTP" class="form-control required name" required>
-				</div>
 			</div>
 		
 			<button type="submit" >Submit</button>
@@ -29,7 +25,7 @@
 
 
 <script>
-	var qrCodeData = "{{ qs }}"; 
+	var qrCodeData = "{{ authenticator }}"; 
 	var qrCodeOptions = {
 		width: 200,
 		height: 200,
