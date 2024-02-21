@@ -4,15 +4,7 @@
 									<form class="form-signup" action="{% url 'userurl:login' %}" method="post"> {% csrf_token %}
 										
 										
-											<div>
-												<input name="email" type="email" placeholder="Email *" class="form-control required email" aria-required="true">
-											</div>
-										
-										
-											<div>
-												<input name="password" type="password" placeholder="Password *" class="form-control required" aria-required="true">
-											</div>
-										
+										{{ form.as_p }}
 										<button type="submit" >Log In</button>
 										{% include 'messages.html' %}
 										

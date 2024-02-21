@@ -3,6 +3,9 @@
 <a href="{% url 'userurl:logout' %}"><button>Logout</button></a>
 
 {% endif %}
+
+{% include 'messages.html' %}
+
 <ul>
 	<li><a href="{% url 'userurl:login' %}">Login</a></li>
 	<li><a href="{% url 'userurl:signup' %}">Register</a></li>
