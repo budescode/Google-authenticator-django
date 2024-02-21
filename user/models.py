@@ -1,11 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.conf import settings
-from django.contrib.auth import get_user_model
-import uuid
-from django.core.mail import EmailMultiAlternatives
-from django.template.loader import get_template
-from datetime import date
 from django_otp.plugins.otp_totp.models import TOTPDevice
 
 
